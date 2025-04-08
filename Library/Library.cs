@@ -27,13 +27,13 @@ namespace Library
         public Book GetBookById(int id)
         {
 
-            //foreach (var book in books)
-            //{
-            //    if (Id == id)
-            //    {
-            //        return book;
-            //    }
-            //}
+            foreach (var book in books)
+            {
+                if (Id == id)
+                {
+                    return book;
+                }
+            }
             return null;
         }
         
@@ -43,9 +43,17 @@ namespace Library
 
         public void RemoveBook(Book[] books, int id)
         {
-            Array.Resize(ref books, books.Length - 1);
-            books[books.Length - 1] = null;
-
+            Book[] modifiedBooks = new Book[0] ;
+            foreach (var book in books) 
+            {
+                if (book.Id != id)
+                {
+                    Array.Resize(ref modifiedBooks, modifiedBooks.Length + 1);
+                    modifiedBooks[modifiedBooks.Length - 1] = book ;
+                }
+                
+            }
+            books = modifiedBooks;
         }
 
 
@@ -71,9 +79,23 @@ namespace Library
         }
 
 
-        public void Update(int id, Book[] book)
+        public void Update(int id,  string name,  string author , double price)
         {
-            
+
+            foreach (var book in books)
+            {
+                if (book.Id == id)
+                {
+                    book.Name = name;
+                    book.AuthorName = author;
+                    book.Price = price;
+                }
+                else
+                {
+                    Console.WriteLine("tapilmadi");
+                }
+            }
+
         }
 
 

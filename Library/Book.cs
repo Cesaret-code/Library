@@ -8,9 +8,9 @@ namespace Library
 {
     internal class Book
     {
-		private  int _id;
+		private static int _id;
 
-        public static int Id { get; set; }
+        public  int Id { get; set; }
 
         public string Name { get; set; }
 
